@@ -1,59 +1,113 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Composition Plan</title>
-        <style>
-            body{
-                font-family:Arial,sans-serif;
-                line-height:1.5;
-                max-width:90rem;
-                margin:auto;
-                padding:1rem;
-                color:#191919;
-                }
-            table{
-                width:100%;
-                border-collapse:collapse;
-                }
-            th,td{
-                padding:.6rem;
-                border:1px solid #999;
-                text-align:left;
-                vertical-align:top;
-                }
-            th{
-                background:#f1f1f1;
-                }
-        </style>
-        </head>
-        <body>
-            <h1>L6 · Composition Plan</h1>
-            <p>Complete one row for every positioned, layered, clipped, rounded, or shape-wrapped element. Duplicate rows as needed.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Element</th>
-                        <th>Content purpose</th>
-                        <th>Normal-flow baseline</th>
-                        <th>Chosen technique and why</th>
-                        <th>Containing block / stacking context</th>
-                        <th>Fallback or disengagement</th>
-                        <th>Required test</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Example only</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                    </tr>
-                </tbody>
-            </table>
-        </body>
-        </html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Composition Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            max-width: 90rem;
+            margin: auto;
+            padding: 1rem;
+            color: #191919;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 0.6rem;
+            border: 1px solid #999;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>L6 · Composition Plan</h1>
+    <p>
+        Complete one row for every positioned, layered, clipped, rounded, or
+        shape-wrapped element. Duplicate rows as needed.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Content purpose</th>
+                <th>Normal-flow baseline</th>
+                <th>Chosen technique and why</th>
+                <th>Containing block / stacking context</th>
+                <th>Fallback or disengagement</th>
+                <th>Required test</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>div (.article-container)</td>
+                <td>
+                    To place the aside and article in one container to ensure the aside
+                    minds the boundaries of the article (placing them on the same
+                    layer). This also acts as a parent container for the aside element
+                    to stop it when the story ends.
+                </td>
+                <td>Block</td>
+                <td>
+                    The positioned div is static to stay in the normal document flow.
+                </td>
+                <td>The element follows a grid layout that creates 2 columns for viewports larger than 52rem and 1
+                    column for smaller viewports. When the larger viewport is in effect, the aside and article elements
+                    align on 1 row. For smaller viewports, the aside stacks on top of the article.</td>
+                <td>The div element is disengaged when the end of the element is reached.</td>
+                <td>Replace</td>
+            </tr>
+            <tr>
+                <td>aside (.story-guide)</td>
+                <td>
+                    The aside is used as a navigation guide for the featured story.
+                </td>
+                <td>Block</td>
+                <td>
+                    The sticky position is used so the aside navigation can travel
+                    downward with the user as they read the document to remain an
+                    available usable resource.
+                </td>
+                <td>The containing block is the div container (.article-container) in column 1 with a column width
+                    of 14rem. A margin-left of 4rem is applied to accommodate the blockquote element.</td>
+                <td>
+                    The sticky element is disengaged when the user scrolls to the end of
+                    the div (.article-container).
+                </td>
+                <td>Replace</td>
+            </tr>
+            <tr>
+                <td>article</td>
+                <td>
+                    The article contains the sections, images, and shapes pertaining to the featured story. 
+                </td>
+                <td>Block</td>
+                <td>A static flow position is used so the user may progress reading through the story without any unexpected behaviors and allow for the contents to remain in the normal flow of the document.</td>
+                <td>
+                    The containing block is the div container (.article-container) in column 2. No width is set to allow the column to automatically take up the remaining space.
+                </td>
+                <td>
+                    The sticky element is disengaged when the user scrolls to the end of
+                    the div (.article-container).
+                </td>
+                <td>Replace</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

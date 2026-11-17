@@ -64,14 +64,17 @@
   --layer-sticky: 20;
   --layer-overlay: 30;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   color: var(--color-dark);
@@ -79,20 +82,24 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
 }
+
 .feature-header {
   position: relative;
   padding: clamp(2rem, 7vw, 6rem);
   background: var(--color-contrast);
   color: #fff;
 }
+
 .eyebrow {
   color: var(--color-border);
   font-weight: 700;
 }
+
 .lede {
   max-width: var(--measure);
   font-size: 1.25rem;
 }
+
 .issue-badge {
   position: absolute;
   inset-block-start: 1rem;
@@ -101,6 +108,7 @@ body {
   background: var(--color-border);
   color: #191919;
 }
+
 main {
   display: grid;
   gap: 2rem;
@@ -108,23 +116,28 @@ main {
   margin: auto;
   padding: var(--space-3);
 }
+
 article {
   min-width: 0;
 }
+
 article section {
   display: flow-root;
   margin-block: 3rem;
   scroll-margin-block-start: 6rem;
 }
+
 .story-guide {
   align-self: start;
   padding: 1rem;
   border: 1px solid var(--color-border);
 }
+
 .story-guide a {
   display: block;
   padding: 0.4rem;
 }
+
 .feature-figure {
   position: relative;
   margin: 0;
@@ -132,57 +145,90 @@ article section {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 .pull-quote {
   margin: 2rem 0;
   padding: 1rem;
-  border-inline-start: 0.4rem solid var(--color-border);
+  border-inline-start: 0.5rem solid var(--color-border);
   font-size: 1.35rem;
 }
+
 .shape-portrait {
   width: min(45%, 20rem);
   margin: 0 1rem 1rem 0;
   border-radius: 50%;
 }
+
 .documentation {
   grid-column: 1/-1;
-  padding: 1rem;
+  padding: 2rem;
   background: #dde1f1;
+  max-width: 100%;
 }
+
+figcaption {
+  position: relative;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  z-index: 2;
+  top: -2.6rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 @media (min-width: 52rem) {
-  main {
+
+  .article-container {
+    display: grid;
     grid-template-columns: 14rem 1fr;
+    gap: var(--space-3);
+    margin-left: 4rem;
   }
+
   .story-guide {
     position: sticky;
     inset-block-start: 1rem;
     z-index: var(--layer-sticky);
-    
+    transform: translateX(-4rem);
+    grid-column: 1;
   }
+
+  article {
+    grid-column: 2;
+  }
+
   .pull-quote {
     position: relative;
     z-index: var(--layer-raised);
     margin-inline-start: -4rem;
-    background: var(--color-surface);
   }
-  @supports (shape-outside: circle(50%)) {
+
+  @supports (shape-outside: circle(45%)) {
     .shape-portrait {
       float: inline-start;
-      shape-outside: circle(50%);
-      shape-margin: 1rem;
+      shape-outside: circle(45%);
+      shape-margin: 0.5rem;
     }
   }
 }
-@supports (clip-path: polygon(0 0)) {
-  .feature-figure img {
-    clip-path: polygon(0 0, 100% 5%, 94% 100%, 6% 94%);
+
+@supports (clip-path: circle(140px)) {
+  .shape-portrait {
+    clip-path: circle(7.6rem);
+
   }
 }
+
 :focus-visible {
-  outline: 0.2rem solid var(--color-accent);
+  outline: .2rem solid var(--color-border);
   outline-offset: 0.2rem;
 }
