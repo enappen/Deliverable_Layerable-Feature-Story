@@ -48,6 +48,7 @@
   --font-weight-bold: 700;
   --letter-spacing-svg-subtext: 5%;
   --space-3: 1rem;
+  --space-sm: 0.5rem;
   --radius: 0.5rem;
   --measure: 68ch;
   --padding-cardrow: 0.1rem;
@@ -87,12 +88,12 @@ body {
   position: relative;
   padding: clamp(2rem, 7vw, 6rem);
   background: var(--color-contrast);
-  color: #fff;
+  color: var(--color-accent);
 }
 
 .eyebrow {
   color: var(--color-border);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .lede {
@@ -102,11 +103,12 @@ body {
 
 .issue-badge {
   position: absolute;
-  inset-block-start: 1rem;
-  inset-inline-end: 1rem;
-  padding: 0.5rem;
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-3);
+  padding: var(--space-3);
   background: var(--color-border);
-  color: #191919;
+  color: var(--color-contrast);
+  font-weight: var(--font-weight-bold);
 }
 
 main {
@@ -130,7 +132,8 @@ article section {
 .story-guide {
   align-self: start;
   padding: 1rem;
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-contrast);
+  border-radius: var(--radius);
 }
 
 .story-guide a {
@@ -154,7 +157,7 @@ img {
 
 .pull-quote {
   margin: 2rem 0;
-  padding: 1rem;
+  padding: var(--space-3);
   border-inline-start: 0.5rem solid var(--color-border);
   font-size: 1.35rem;
 }
@@ -177,12 +180,12 @@ figcaption {
   color: var(--color-accent);
   font-weight: var(--font-weight-bold);
   z-index: 2;
-  top: -2.6rem;
+  top: -4rem;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: var(--space-sm);
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
 }
 
 @media (min-width: 52rem) {
@@ -221,10 +224,9 @@ figcaption {
   }
 }
 
-@supports (clip-path: circle(140px)) {
+@supports (clip-path: circle(7.6rem)) {
   .shape-portrait {
     clip-path: circle(7.6rem);
-
   }
 }
 
