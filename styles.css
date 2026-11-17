@@ -189,7 +189,6 @@ figcaption {
 }
 
 @media (min-width: 52rem) {
-
   .article-container {
     display: grid;
     grid-template-columns: 14rem 1fr;
@@ -231,6 +230,6 @@ figcaption {
 }
 
 :focus-visible {
-  outline: .2rem solid var(--color-border);
+  outline: 0.2rem solid var(--color-border);
   outline-offset: 0.2rem;
 }

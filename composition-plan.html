@@ -41,7 +41,7 @@
     </p>
     <table>
       <thead>
-        <tr style="position: sticky; top: 0;">
+        <tr style="position: sticky; top: 0">
           <th>Element</th>
           <th>Content purpose</th>
           <th>Normal-flow baseline</th>
@@ -125,35 +125,49 @@
         <tr>
           <td>Figcaption</td>
           <td>
-            The figcaption provides additional context to the images purpose and its connection to the featured story.
+            The figcaption provides additional context to the images purpose and
+            its connection to the featured story.
           </td>
           <td>Inline</td>
           <td>
-            The relative position is used to adjust the caption position from it's original location to move it up over the image. 
+            The relative position is used to adjust the caption position from
+            it's original location to move it up over the image.
           </td>
           <td>
-            The containing block is a figure (.feature-figure) and is after the image element in the contained figure.
+            The containing block is a figure (.feature-figure) and is after the
+            image element in the contained figure.
           </td>
           <td>
-            The figcaption element is disengaged at the end of the image. On a smaller viewport the text wraps to the next line approximately (the top of the figcaption is approximately 4rem from the top). This creates a controlled overlap.
+            The figcaption element is disengaged at the end of the image. On a
+            smaller viewport the text wraps to the next line approximately (the
+            top of the figcaption is approximately 4rem from the top). This
+            creates a controlled overlap.
           </td>
           <td>Replace</td>
         </tr>
         <tr>
           <td>Image (.shape-portrait)</td>
           <td>
-            The image, with class shape-portrait, is helpful for providing a visual to various types of fiber that connect to the section 2 text in the featured story.
+            The image, with class shape-portrait, is helpful for providing a
+            visual to various types of fiber that connect to the section 2 text
+            in the featured story.
           </td>
           <td>Block</td>
           <td>
-            The image, with the class shape-portrait, is clipped using the clip-path property with the value circle(7.6rem). Relative units are used to maintain consistent clipping mask. The image has a float property with value inline-start to have the image anchor to the left of text. The shape-outside creates a rounded boundary box for the text to fall along. The shape-margin of 0.5rem add to the newly defined boundary box.
+            The image, with the class shape-portrait, is clipped using the
+            clip-path property with the value circle(7.6rem). Relative units are
+            used to maintain consistent clipping mask. The image has a float
+            property with value inline-start to have the image anchor to the
+            left of text. The shape-outside creates a rounded boundary box for
+            the text to fall along. The shape-margin of 0.5rem add to the newly
+            defined boundary box.
           </td>
           <td>
-            The containing block is the section element, with class section-two. The stacking context for smaller viewports proceeds in the order of heading, image, then text.
+            The containing block is the section element, with class section-two.
+            The stacking context for smaller viewports proceeds in the order of
+            heading, image, then text.
           </td>
-          <td>
-            The element is disengaged at the end of the section element. 
-          </td>
+          <td>The element is disengaged at the end of the section element.</td>
           <td>Replace</td>
         </tr>
       </tbody>
