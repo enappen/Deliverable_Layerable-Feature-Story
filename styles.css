@@ -52,18 +52,8 @@
   --radius: 0.5rem;
   --measure: 68ch;
   --padding-cardrow: 0.1rem;
-}
-
-:root {
-  /*--color-text:#404040;
-    --color-surface:#fff;
-    --color-accent:#ffc627;
-    --color-border:#d0d0d0;
-    --color-muted:#5c6670;*/
   --layer-base: 0;
-  --layer-raised: 10;
-  --layer-sticky: 20;
-  --layer-overlay: 30;
+  --layer-raised: 2;
 }
 
 *,
@@ -101,6 +91,11 @@ body {
   font-size: 1.25rem;
 }
 
+p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 .issue-badge {
   position: absolute;
   inset-block-start: var(--space-3);
@@ -109,6 +104,7 @@ body {
   background: var(--color-border);
   color: var(--color-contrast);
   font-weight: var(--font-weight-bold);
+  border-radius: var(--radius);
 }
 
 main {
@@ -147,6 +143,7 @@ article section {
   padding: 1rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
+  max-width: 660px;
 }
 
 img {
@@ -157,7 +154,7 @@ img {
 
 .test-img {
   min-width: 0;
-  width: 100%;
+  width: 80%;
   height: auto;
   max-width: 600px;
 }
@@ -170,7 +167,7 @@ img {
 }
 
 .shape-portrait {
-  width: min(45%, 20rem);
+  width: min(70%, 20rem);
   margin: 0 1rem 1rem 0;
   border-radius: 50%;
 }
@@ -180,19 +177,26 @@ img {
   padding: 2rem;
   background: #dde1f1;
   max-width: 100%;
+  min-width: 0;
 }
 
 figcaption {
-  position: relative;
   color: var(--color-accent);
   font-weight: var(--font-weight-bold);
-  z-index: 2;
-  top: -4rem;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 1.0);
   padding-left: var(--space-sm);
   padding-top: var(--space-sm);
   padding-bottom: var(--space-sm);
+  max-width: 640px;
+  min-width: 0;
+}
+
+@media (max-width: 374px) {
+  .issue-badge {
+    position: relative;
+    top: -0.04rem;
+  }
 }
 
 @media (min-width: 52rem) {
@@ -204,11 +208,16 @@ figcaption {
   }
 
   .story-guide {
-    position: sticky;
+    position: relative;
     inset-block-start: 1rem;
-    z-index: var(--layer-sticky);
     transform: translateX(-4rem);
     grid-column: 1;
+  }
+  @supports (position: sticky) {
+    .story-guide {
+      position: sticky;
+      z-index: var(--layer-raised);
+    }
   }
 
   article {
@@ -221,18 +230,35 @@ figcaption {
     margin-inline-start: -4rem;
   }
 
+  .shape-portrait {
+    float: inline-start;
+  }
   @supports (shape-outside: circle(45%)) {
     .shape-portrait {
-      float: inline-start;
+      border-radius: 0;
       shape-outside: circle(45%);
       shape-margin: 0.5rem;
     }
+  }
+  @supports (clip-path: circle(7.6rem)) {
+  .shape-portrait {
+    clip-path: circle(7.6rem);
+  }
+}
+}
+
+@supports (position: relative) {
+  figcaption {
+    position: relative;
+    z-index: var(--layer-raised);
+    top: -4rem;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 }
 
 @supports (clip-path: circle(7.6rem)) {
   .shape-portrait {
-    clip-path: circle(7.6rem);
+    clip-path: circle(7rem);
   }
 }
 

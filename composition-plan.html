@@ -41,7 +41,7 @@
     </p>
     <table>
       <thead>
-        <tr style="position: sticky; top: 0">
+        <tr style="position: sticky; top: 0; border: 2px solid black;">
           <th>Element</th>
           <th>Content purpose</th>
           <th>Normal-flow baseline</th>
@@ -52,31 +52,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>div (.article-container)</td>
-          <td>
-            To place the aside and article in one container to ensure the aside
-            minds the boundaries of the article (placing them on the same
-            layer). This also acts as a parent container for the aside element
-            to stop it when the story ends.
-          </td>
-          <td>Block</td>
-          <td>
-            The positioned div is static to stay in the normal document flow.
-          </td>
-          <td>
-            The element follows a grid layout that creates 2 columns for
-            viewports larger than 52rem and 1 column for smaller viewports. When
-            the larger viewport is in effect, the aside and article elements
-            align on 1 row. For smaller viewports, the aside stacks on top of
-            the article.
-          </td>
-          <td>
-            The div element is disengaged when the end of the element is
-            reached.
-          </td>
-          <td>Replace</td>
-        </tr>
         <tr>
           <td>aside (.story-guide)</td>
           <td>
@@ -91,37 +66,24 @@
           <td>
             The containing block is the div container (.article-container) in
             column 1 with a column width of 14rem. A margin-left of 4rem is
-            applied to accommodate the blockquote element.
+            applied to accommodate the blockquote element. A z-index of 2 is
+            assigned to keep it above the article column.
           </td>
           <td>
-            The sticky element is disengaged when the user scrolls to the end of
-            the div (.article-container).
+            The fallback for the sticky position is relative. If sticky is not
+            supported or disengaged, the aside element will not move back into
+            the normal document flow but have no moved position.
           </td>
-          <td>Replace</td>
+          <td>
+            To test the fallback, I commented out the support at-rule for the
+            aside element. I expected the sticky element to remain static at the
+            top left and function normally (scrolling with the user to the end
+            of its container). I observed the aside element remained in its
+            initial position and then scroll through the container when comments
+            were removed. No changes were needed.
+          </td>
         </tr>
-        <tr>
-          <td>article</td>
-          <td>
-            The article contains the sections, images, and shapes pertaining to
-            the featured story.
-          </td>
-          <td>Block</td>
-          <td>
-            A static flow position is used so the user may progress reading
-            through the story without any unexpected behaviors and allow for the
-            contents to remain in the normal flow of the document.
-          </td>
-          <td>
-            The containing block is the div container (.article-container) in
-            column 2. No width is set to allow the column to automatically take
-            up the remaining space.
-          </td>
-          <td>
-            The sticky element is disengaged when the user scrolls to the end of
-            the div (.article-container).
-          </td>
-          <td>Replace</td>
-        </tr>
+
         <tr>
           <td>Figcaption</td>
           <td>
@@ -131,20 +93,33 @@
           <td>Inline</td>
           <td>
             The relative position is used to adjust the caption position from
-            it's original location to move it up over the image.
+            it's original location to move it up over the image. The max-width
+            is set to 640px (the max-width of the image its overlapping) and a
+            min-width of 0 so it will remain responsive with the image. The top
+            property lifts the caption enough so when the text wraps, the bottom
+            of the caption background lines up with the bottom of the image.
           </td>
           <td>
             The containing block is a figure (.feature-figure) and is after the
             image element in the contained figure.
           </td>
           <td>
-            The figcaption element is disengaged at the end of the image. On a
-            smaller viewport the text wraps to the next line approximately (the
-            top of the figcaption is approximately 4rem from the top). This
-            creates a controlled overlap.
+            If the figcaption element is disengaged or unavailable due to a
+            users browser setting, the figcaption element falls back to a static
+            positioned element right below the image. Since the figcaption
+            wouldn't be over an image when disengaged, I made the background
+            color opaque and left no margin on top. This give the caption a
+            similar illusion of being attached to the image.
           </td>
-          <td>Replace</td>
+          <td>
+            To test the fall back works, I commented out the supports at-rule
+            for the figcaption. I expected the top of the figcaption background
+            color to line up to the bottom of the image and maintain the same
+            width as the image. I observed that the figcaption behaved as
+            expected and no changes were needed.
+          </td>
         </tr>
+
         <tr>
           <td>Image (.shape-portrait)</td>
           <td>
@@ -167,8 +142,48 @@
             The stacking context for smaller viewports proceeds in the order of
             heading, image, then text.
           </td>
-          <td>The element is disengaged at the end of the section element.</td>
-          <td>Replace</td>
+          <td>
+            The fallback for the clip-path and shape-outline is the
+            border-radius property that is set to 50%. It keeps the image round
+            even when the clip path doesn't work. The shapes outline returns to
+            a block style format, with the round image on the left and text on
+            the right.
+          </td>
+          <td>
+            To test the fallback, I commented out the support at-rule for the
+            shape-portrait class regarding the clipping and special margins. I
+            expected the image to remain in a circular shape and the test to be
+            on the right in block form. I observed the image stayed round and
+            the text behaved as expected. No changes are needed.
+          </td>
+        </tr>
+        <tr>
+          <td>Span (.issue-badge)</td>
+          <td>
+            The purpose is to display the genre/theme of the article. For this
+            website, it is the Friday's Fiber Feature special.
+          </td>
+          <td>Block</td>
+          <td>
+            The badge is positioned with absolute to keep it anchored to its
+            parent in the top right corner.
+          </td>
+          <td>
+            The containing block is the header element. The stacking context is
+            the eyebrow, badge, heading, then introduction paragraph.
+          </td>
+          <td>
+            The fallback for this is applying a position of relative to keep it
+            near its starting position moved slightly up to have better spacing
+            between the eyebrow and heading on smaller viewports to avoid
+            unintended overlap.
+          </td>
+          <td>
+            To test the fallback, I shrunk the viewport to less than 360px. I
+            expected the span badge to fall below the eyebrow and have no
+            overlap. I observed the span badge behaved as intended. No changes
+            were needed.
+          </td>
         </tr>
       </tbody>
     </table>

@@ -10,6 +10,7 @@
   <body>
     <header class="feature-header">
       <p class="eyebrow">L1 · Feature Story</p>
+      <span class="issue-badge">Friday's Fiber Feature</span>
       <h1>Finding Fiber</h1>
       <p class="lede">
         What does popcorn, whole grain wheat, blackberries, and leafy greens
@@ -18,7 +19,6 @@
         dish anytime soon, as an individual ingredient, they are a great way to
         increase your fiber intake in your diet.
       </p>
-      <span class="issue-badge">Friday's Fiber Feature</span>
     </header>
     <main>
       <div class="article-container">
@@ -162,61 +162,261 @@
           </p>
         </section>
         <section>
-            <h3>Support/Fallback Record</h3>
-            <p></p>
+          <h3>Support/Fallback Record</h3>
+          <p></p>
         </section>
         <section>
-            <h3>Tests</h3>
-            <ul>
-                <li>
-                    <h4>HTML Validation</h4>
-                    <p>To validate that the HTML had no errors, I ran the script through W3's HTML validator. I expected no errors to be reported. After running the validator there was a warning for the article element not having a heading. However, this concern missing that the article is divided into 2 sections and within those sections are the heading elements. No changes are needed. (The heading element is highlighted in the text input box).</p>
-                    <img src="Screenshots/html-validator.png" class="test-img" alt="A screen shot of the HTML validator reporting no errors."/>
-                </li>
-                <li>
-                    <h4>CSS Validation</h4>
-                    <p>To check the CSS for any errors, I ran the script through the W3C validator. I expected no errors to be reported. After running the report I observed no errors were reported.</p>
-                    <img src="Screenshots/css-validator.png" class="test-img" alt="Teh W3C CSS validator confirming that there are no errors." />
-                </li>
-                <li>
-                    <h4>CSS-disabled Reading Order</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Viewports</h4>
-                    <p>320px</p>
-                    <p>768px</p>
-                    <p>1280px</p>
-                </li>
-                <li>
-                    <h4>200% Zoom</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Keyboard Focus</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Long-Title and Doubled-Paragraph Content Growth</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Sticky Behavior At Page and Section Boundaries</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Pointer Activation of Every Layered Link/Control</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Clip-Path and Shape-Outside Disabled</h4>
-                    <p></p>
-                </li>
-                <li>
-                    <h4>Stacking-Context Inspection For All Layered Elements</h4>
-                    <p></p>
-                </li>
-            </ul>
+          <h3>Tests</h3>
+          <ul>
+            <li>
+              <h4>HTML Validation</h4>
+              <p>
+                To validate that the HTML had no errors, I ran the script
+                through W3's HTML validator. I expected no errors to be
+                reported. After running the validator there was a warning for
+                the article element not having a heading. However, this concern
+                missing that the article is divided into 2 sections and within
+                those sections are the heading elements. No changes are needed.
+                (The heading element is highlighted in the text input box).
+              </p>
+              <img
+                src="Screenshots/html-validator.png"
+                class="test-img"
+                alt="A screen shot of the HTML validator reporting no errors."
+              />
+            </li>
+            <li>
+              <h4>CSS Validation</h4>
+              <p>
+                To check the CSS for any errors, I ran the script through the
+                W3C validator. I expected no errors to be reported. After
+                running the report I observed no errors were reported.
+              </p>
+              <img
+                src="Screenshots/css-validator.png"
+                class="test-img"
+                alt="The W3C CSS validator confirming that there are no errors."
+              />
+            </li>
+            <li>
+              <h4>CSS-disabled Reading Order</h4>
+              <p>
+                To test the reading order of the page with CSS disabled, I
+                opened the website in Firefox and disabled the CSS by hitting
+                alt, view, page style, then no style. I expect the article to
+                remain in the proper order with no rearranging. I observed that
+                the heading was in proper order as well as the rest of the
+                article after the featured image. There was no strange anomalies
+                and no changes were needed.
+              </p>
+              <img
+                src="Screenshots/CSS-disabled_read-order1.png"
+                class="test-img"
+                alt="Screenshot of the website with CSS disabled showing the article in order at the heading of the page."
+              />
+              <p></p>
+              <img
+                src="Screenshots/CSS-disabled_read-order2.png"
+                class="test-img"
+                alt="Screenshot of the website with CSS disabled showing the article in order at the section below the featured image."
+              />
+            </li>
+            <li>
+              <h4>Viewports</h4>
+              <p>
+                To test the responsiveness of the website at different viewport
+                sizes, I started by setting the responsive mode to 320px wide. I
+                expected the website to respond properly with no overlap or
+                overflow. I observed everything behaving properly but the
+                absolute positioned issue-badge span element was overlapping
+                with the eyebrow in the header. To fix this issue, I set a media
+                setting (with the max-width at 360px) to change the issue badge
+                position to relative with a slight movement up to fit well
+                between the eyebrow and heading. To ensure these changes respond
+                properly, I set the viewport to 1000px, then 320px and confirmed
+                the issue badge functioned properly.
+              </p>
+              <img
+                src="Screenshots/Viewport_320.png"
+                class="test-img"
+                alt="Screenshot of the viewport set to 320px, showing heading properly acting responsive with no overflow or overlap."
+              />
+              <p></p>
+              <img
+                src="Screenshots/Viewport_320b.png"
+                class="test-img"
+                alt="Screenshote of the viewport set to 320px, showing the article and block quote and responsive with no overflow or overlap."
+              />
+              <p>
+                Next, I set the viewport to 768px. I expected there no be no
+                overlap, no overflow, and the aside and section-two image to
+                stack in there areas. I observed all elements acting as
+                expected. No changes are needed.
+              </p>
+              <img
+                src="Screenshots/Viewport_768.png"
+                class="test-img"
+                alt="Screenshot of the website with the viewport set to 768px, showcasing no overlap, no overflow, and responsive elemnets."
+              />
+              <p>
+                Last, I set the viewport to 1280px. I expected the aside to
+                appear to the left of the article and scroll with the article,
+                the issue-badge to appear in the top-right corner of the header,
+                and the clipped image in section-two to float the left of text
+                with a circle margin having text line up to the circular margin.
+                I observed all elements behaved as expected. No changes were
+                needed.
+              </p>
+            </li>
+            <li>
+              <h4>200% Zoom</h4>
+              <p>
+                To ensure sharp quality text and element format properly to the
+                viewport, I zoomed in at 200% (look to the right of the URL in
+                the screenshot which confirms zoom is at 200%). I expected the
+                elements to have smaller viewport layout relying on stacking and
+                sharp quality text. I observed that the elements stacked where
+                space was tighter to make a smoother user-experience. The text
+                remained a sharp quality. No changes needed.
+              </p>
+              <img
+                src="Screenshots/200-Zoom1.png"
+                class="test-img"
+                alt="Screenshot of the header zoomed in at 200% displaying responsive elements."
+              />
+              <p></p>
+              <img
+                src="Screenshots/200-Zoom2.png"
+                class="test-img"
+                alt="Screenshto of the article zoomed in at 200% showing responsive elements and text still sharp."
+              />
+            </li>
+            <li>
+              <h4>Keyboard Focus</h4>
+              <p>
+                To test keyboard focus and accessibility I navigated the website
+                with arrow keys and tabbed through the document to ensure the
+                visible focus indicator acted appropriately. I expected the site
+                to be fully accessible with the keyboard and the focus indicator
+                to create a green outline on linked elements. I observed the
+                focus indicator was visible and the site was navigable by arrow
+                keys as well. No changes needed.
+              </p>
+              <img
+                src="Screenshots/focus-indicator.png"
+                class="test-img"
+                alt="Screenshot of the website with a green focus indicator outline around the first link in the aside element."
+              />
+            </li>
+            <li>
+              <h4>Long-Title and Doubled-Paragraph Content Growth</h4>
+              <p>
+                To ensure long unbroken text remains responsive in the website,
+                I observed the links fully written in the sources section in the
+                documentation element at 320px viewport. I expected there to be
+                no overflow and the text remain responsive. I observed one link
+                had an overflow. The URL had a section that went a while before
+                a forward slash was used which appeared to be the wrapping point
+                for all the URL's. To solve this issue, I referred to the WGAC's
+                <a href="https://www.w3.org/WAI/WCAG21/Techniques/css/C33"
+                  >Allowing for Reflow with Long URLs and Strings of Text</a
+                >
+                page, which recommended using overflow-wrap and word-wrap
+                properties to force the break. To test this theory, I applied
+                the properties to the paragraph element because the long URL's
+                are written in paragraphs in APA Citation Style. I expected the
+                URL's to wrap properly. After applying the properties, I
+                observed all long URL's wrapped without difficulty.
+              </p>
+              <img
+                src="Screenshots/Long-Text.png"
+                class="test-img"
+                alt="Screenshot of the sources section on the website displaying properly wrapped text."
+              />
+            </li>
+            <li>
+              <h4>Sticky Behavior At Page and Section Boundaries</h4>
+              <p>
+                To test that the sticky aside element properly adhered to it's
+                boundaries and moved through it's whole container, I set the
+                viewport to 1200px and scrolled through the article. I expected
+                the aside to start scrolling when 1rem away from the top
+                continuing to the bottom of the container. I observed that the
+                aside behaved as expected with the sticky element scrolling
+                properly and minding its boundaries set by the parent container.
+                No changes were needed.
+              </p>
+              <img
+                src="Screenshots/sticky1.png"
+                class="test-img"
+                alt="Screenshot of sticky element moving with page scrolling near middle of article."
+              />
+              <p></p>
+              <img
+                src="Screenshots/sticky2.png"
+                class="test-img"
+                alt="Screenshot of sticky element stopping at the end of the article container minding its boundary."
+              />
+            </li>
+            <li>
+              <h4>Pointer Activation of Every Layered Link/Control</h4>
+              <p>
+                To test that ever link is not obscured by any layer, I hovered
+                over and clicked each link in the document (2 links in the aside
+                element and 1 link to the composition plan in the sources
+                section of documentation). I expected the links to all be
+                accessible and functional. I observed that all links when
+                hovering had the URL appear in the bottom-left corner for the
+                aside links and in the middle for the link to the composition
+                plan. Everything functioned as expected, no changes needed.
+              </p>
+              <img
+                src="Screenshots/Pointer-aside1.png"
+                class="test-img"
+                alt="Screenshot of pointer hovering over aside link 1 showing its accessible with the link appearing in the bottom left corner."
+              />
+              <p></p>
+              <img
+                src="Screenshots/Pointer-aside2.png"
+                class="test-img"
+                alt="Screenshot of pointer hovering over aside link 2 showing its accessible with the link appearing in the bottom left corner."
+              />
+              <p></p>
+              <img
+                src="Screenshots/Pointer_composition-plan.png"
+                class="test-img"
+                alt="Screenshot of pointer hovering over composition plan link showing its accessible with the link appearing slightly to the left of the hyperlink."
+              />
+            </li>
+            <li>
+              <h4>Clip-Path and Shape-Outside Disabled</h4>
+              <p>
+                To test that the fallback worked properly when clip-path and
+                shape-outside are disabled, I commented out the properties. I
+                expected the image to stay round because of the border-radius on
+                the image being set to 50% and the text to move to the right of
+                the image with a block container. I observed that the fallback
+                worked successfully and the image stayed round. No changes are
+                needed.
+              </p>
+              <img 
+                src="Screenshots/clip-path_shape-outline_disabled.png"
+                class="test-img"
+                alt="Screenshot of the image in section-two with the clip path and shape outside disabled revealing the image staying round and the text functioning properly."
+              />
+            </li>
+            <li>
+              <h4>Stacking-Context Inspection For All Layered Elements</h4>
+              <p>
+                To check the stacking-context for all layered elements, I checked that layered elements stacked properly in their smaller viewport. I expected the elements to wrap in a manner that would not overlap/cover its neighboring elements. I observed no elements obscuring other elements and proper stacking. No changes needed.                
+              </p>
+              <img
+                src="Screenshots/stacking.png"
+                class="test-img"
+                alt="Screenshot of the layered figcaption on the image showing proper stacking."
+              />
+            </li>
+          </ul>
         </section>
         <section>
           <h3>Sources</h3>
@@ -249,8 +449,8 @@
           </p>
         </section>
         <section>
-            <h3>AI Disclosure: </h3>
-            <p>No AI was used in this project.</p>
+          <h3>AI Disclosure:</h3>
+          <p>No AI was used in this project.</p>
         </section>
       </section>
     </main>
