@@ -23,5 +23,6 @@ The border-radius property is used as a fallback for the clip-path on the image 
 shape-wrapped. 
 
 ## Documentation and Testing
-On the main page full documentation and testing is available for review including the composition plan, test record, sources, and AI disclosure.
+On the main page full documentation and testing is available for review including the composition plan, MDN citations, test record, sources, and AI disclosure. 
+(No AI was used in this project.)
 
